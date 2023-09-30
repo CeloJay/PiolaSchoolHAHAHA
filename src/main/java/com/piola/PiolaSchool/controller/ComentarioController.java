@@ -19,6 +19,7 @@ public class ComentarioController {
         this.dao = dao;
     }
 
+    @GetMapping
     public List<Comentario> comentarioList(){
         return (List<Comentario>) dao.findAll();
     }

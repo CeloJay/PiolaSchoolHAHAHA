@@ -18,12 +18,14 @@ public class DuvidaController {
         this.dao = dao;
     }
 
+    @GetMapping
     public List<Duvidas> listaDuvidas () {
         return (List<Duvidas>) dao.findAll();
     }
 
     @PostMapping
-    public Duvidas gerarDuvida(@RequestBody Duvidas duvidas){
+    public Duvidas gerarDuvida(@RequestParam String duvida, @RequestParam String email,
+                               @RequestParam Integer curso,  Duvidas duvidas){
         Duvidas duvidaCreate = dao.save(duvidas);
         return duvidaCreate;
     }
