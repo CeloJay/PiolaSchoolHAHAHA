@@ -25,8 +25,7 @@ public class ComentarioController {
     }
 
     @PostMapping("/comentar")
-    public Comentario criarComentario(@RequestParam String comentario, @RequestParam String email,
-                                      @RequestParam Integer curso, Comentario comentarios){
+    public Comentario criarComentario(@RequestBody Comentario comentarios){
         Comentario comentarioCreate = dao.save(comentarios);
         return comentarioCreate;
     }

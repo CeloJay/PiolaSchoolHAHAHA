@@ -40,8 +40,7 @@ public class AlunoController {
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/cadastrar")
-    public Aluno criarAluno(@Valid @RequestParam String nome, @RequestParam String email,
-                            @RequestParam String senha, @RequestParam String telefone, @RequestParam Integer curso, Aluno aluno){
+    public Aluno criarAluno(@Valid @RequestBody Aluno aluno){
         aluno.setSenha(encoder.encode(aluno.getSenha()));
         Aluno alunoCreate = dao.save(aluno);
         return alunoCreate;

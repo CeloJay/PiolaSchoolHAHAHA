@@ -24,7 +24,7 @@ public class CursoController {
     }
 
     @PostMapping("/adicionar")
-    public Curso criarCurso(@RequestParam String nome, @RequestParam String descricao, Curso curso){
+    public Curso criarCurso(@RequestBody Curso curso){
         Curso cursoCreate = dao.save(curso);
         return cursoCreate;
     }

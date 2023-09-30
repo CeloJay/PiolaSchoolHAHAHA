@@ -46,8 +46,7 @@ public class ProfessorController {
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/cadastrar")
-    public Professor criarProfessor(@Valid @RequestParam String nome, @RequestParam String email,
-                                    @RequestParam String senha, @RequestParam String telefone, Professor professor){
+    public Professor criarProfessor(@Valid @RequestBody Professor professor){
         professor.setSenha(encoder.encode(professor.getSenha()));
         Professor ProfessorCreate = dao.save(professor);
         return ProfessorCreate;
