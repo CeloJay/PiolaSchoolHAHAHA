@@ -40,6 +40,7 @@ public class AlunoController {
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/cadastrar")
+    @CrossOrigin
     public Aluno criarAluno(@Valid @RequestBody Aluno aluno){
         aluno.setSenha(encoder.encode(aluno.getSenha()));
         Aluno alunoCreate = dao.save(aluno);
@@ -67,13 +68,22 @@ public class AlunoController {
     }
 
     @DeleteMapping("/{matricula}")
+    @CrossOrigin
     public Optional<Aluno> deletarAluno(@PathVariable Integer matricula){
         Optional<Aluno> Aluno = dao.findById(matricula);
         dao.deleteById(matricula);
         return Aluno;
     }
+    
+    @GetMapping("/{matricula}")
+    @CrossOrigin
+    public Optional<Aluno> getAluno(@PathVariable Integer matricula){
+        Optional<Aluno> Aluno = dao.findById(matricula);
+        return Aluno;
+    }
 
     @PostMapping("/login")
+    @CrossOrigin
     public ResponseEntity<Integer> validarSenha(@RequestParam String email,
                                                 @RequestParam String senha) {
 

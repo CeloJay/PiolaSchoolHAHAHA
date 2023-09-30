@@ -46,6 +46,7 @@ public class ProfessorController {
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/cadastrar")
+    @CrossOrigin
     public Professor criarProfessor(@Valid @RequestBody Professor professor){
         professor.setSenha(encoder.encode(professor.getSenha()));
         Professor ProfessorCreate = dao.save(professor);
@@ -53,9 +54,17 @@ public class ProfessorController {
     }
 
     @DeleteMapping("/{matricula}")
+    @CrossOrigin
     public Optional<Professor> deletarProfessor(@PathVariable Integer matricula){
         Optional<Professor> Professor = dao.findById(matricula);
         dao.deleteById(matricula);
+        return Professor;
+    }
+    
+    @GetMapping("/{matricula}")
+    @CrossOrigin
+    public Optional<Professor> getProfessor(@PathVariable Integer matricula){
+        Optional<Professor> Professor = dao.findById(matricula);
         return Professor;
     }
 

@@ -17,10 +17,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
@@ -45,6 +41,7 @@ public class AdministradorController  {
     
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/cadastrar")
+    @CrossOrigin
     public Administrador criarAdministrador(@Valid @RequestBody Administrador admiministrador){
         admiministrador.setSenha(encoder.encode(admiministrador.getSenha()));
         Administrador administradorCreate = dao.save(admiministrador);
@@ -64,9 +61,17 @@ public class AdministradorController  {
     }
 
     @DeleteMapping("/{matricula}")
+    @CrossOrigin
     public Optional<Administrador> deletarAdministrador(@PathVariable Integer matricula){
             Optional<Administrador> administrador = dao.findById(matricula);
             dao.deleteById(matricula);
+            return administrador;
+    }
+    
+    @GetMapping("/{matricula}")
+    @CrossOrigin
+    public Optional<Administrador> getAdministrador(@PathVariable Integer matricula){
+            Optional<Administrador> administrador = dao.findById(matricula);
             return administrador;
     }
 
