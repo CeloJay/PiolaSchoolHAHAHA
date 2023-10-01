@@ -84,7 +84,6 @@ public class ProfessorController {
 
         Optional<Professor> optionalProfessor = dao.findByEmail(email);
         if (optionalProfessor.isEmpty()) {
-            // return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(false);
             Professor professor = null;
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(0);
         }
@@ -96,8 +95,6 @@ public class ProfessorController {
             return ResponseEntity.status(HttpStatus.OK).body(professor.getMatricula());
         } else
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(0);
-        //   HttpStatus status = (valid) ? return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(0); : HttpStatus.UNAUTHORIZED;
-        // return ResponseEntity.status(status).body(valid);
     }
 
 }

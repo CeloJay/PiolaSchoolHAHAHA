@@ -19,8 +19,9 @@ public class DuvidaController {
     }
 
     @GetMapping
-    public List<Duvidas> listaDuvidas () {
-        return (List<Duvidas>) dao.findAll();
+    public List<Duvidas> listaDuvidas(@RequestParam Integer curso) {
+        List<Duvidas> listDuvida = dao.findByCurso(curso);
+        return listDuvida;
     }
 
     @PostMapping

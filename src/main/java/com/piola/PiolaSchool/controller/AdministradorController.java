@@ -82,7 +82,6 @@ public class AdministradorController  {
 
         Optional<Administrador> optionalAdministrador = dao.findByEmail(email);
         if (optionalAdministrador.isEmpty()) {
-            // return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(false);
             Administrador administrador = null;
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(0);
         }
@@ -94,8 +93,6 @@ public class AdministradorController  {
             return ResponseEntity.status(HttpStatus.OK).body(administrador.getMatricula());
         } else
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(0);
-        //   HttpStatus status = (valid) ? return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(0); : HttpStatus.UNAUTHORIZED;
-        // return ResponseEntity.status(status).body(valid);
     }
 
 }

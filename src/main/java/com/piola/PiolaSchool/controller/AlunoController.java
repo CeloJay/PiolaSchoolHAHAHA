@@ -47,6 +47,7 @@ public class AlunoController {
         return alunoCreate;
     }
 
+
     @PutMapping
     public Aluno editarAluno(@Valid @RequestParam String nome, @RequestParam String email,
                              @RequestParam String senha, @RequestParam String telefone, @RequestParam Integer curso, Aluno aluno){
@@ -54,6 +55,8 @@ public class AlunoController {
         Aluno alunoEdit = dao.save(aluno);
         return alunoEdit;
     }
+
+
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
