@@ -3,6 +3,7 @@ package com.piola.PiolaSchool.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -27,7 +28,7 @@ public class Professor {
     @Column(name = "telefone",length = 15,nullable = false)
     private String telefone;
 
-    @NotBlank(message = "coloca o curso ae paekkkkk")
+    @NotNull(message = "coloca o curso ae paekkkkk")
     @Column(name = "curso", length = 16, nullable = false)
     private Integer curso;
 

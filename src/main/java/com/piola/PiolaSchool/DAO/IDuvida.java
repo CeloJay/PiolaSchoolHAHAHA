@@ -8,4 +8,6 @@ import java.util.Optional;
 
 public interface IDuvida extends CrudRepository<Duvidas, String> {
     public List<Duvidas> findByCurso(Integer curso);
+    public List<Duvidas> findAll();
 }
+
